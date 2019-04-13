@@ -24,6 +24,10 @@ import {Component, Input} from '@angular/core';
       .well div {
         color: #bbb;
       }
+      
+      .thumbnail {
+        min-height: 210px;
+      }
     `
   ]
 })
