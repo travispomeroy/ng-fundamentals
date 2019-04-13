@@ -11,6 +11,8 @@ import {EventDetailsComponent} from "./events/details/event-details.component";
 import {RouterModule} from "@angular/router";
 import {appRoutes} from "../routes";
 import {CreateEventComponent} from "./events/create-event.component";
+import {Error404Component} from "./errors/404.component";
+import {EventRouteActivator} from "./events/event-route-activator.service";
 
 @NgModule({
   imports: [
@@ -23,11 +25,13 @@ import {CreateEventComponent} from "./events/create-event.component";
     EventThumbnailComponent,
     NavBarComponent,
     EventDetailsComponent,
-    CreateEventComponent
+    CreateEventComponent,
+    Error404Component
   ],
   providers: [
     EventService,
-    ToasterService
+    ToasterService,
+    EventRouteActivator
   ],
   bootstrap: [EventsAppComponent]
 })
