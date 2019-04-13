@@ -10,13 +10,23 @@ import {Component, Input} from '@angular/core';
       <div>Price: \${{eventFromThumbnailComponent.price}}</div>
       <div>
         <span>Location: {{eventFromThumbnailComponent.location.address}}</span>
-        <span>&nbsp;</span>
-        <span>{{eventFromThumbnailComponent.location.city}}
+        <span class="pad-left">{{eventFromThumbnailComponent.location.city}}
           , {{eventFromThumbnailComponent.location.country}}</span>
       </div>
     </div>
-  `
+  `,
+  styles: [
+      `
+      .pad-left {
+        margin-left: 10px;
+      }
+
+      .well div {
+        color: #bbb;
+      }
+    `
+  ]
 })
-export class EventThumbnailComponent  {
-  @Input() eventFromThumbnailComponent:any
+export class EventThumbnailComponent {
+  @Input() eventFromThumbnailComponent: any
 }
