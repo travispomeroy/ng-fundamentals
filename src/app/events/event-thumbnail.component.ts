@@ -3,7 +3,7 @@ import {Component, Input} from '@angular/core';
 @Component({
   selector: 'event-thumbnail',
   template: `
-    <div class="well hoverwell thumbnail">
+    <div class="well hoverwell thumbnail" [routerLink]="['/events', event.id]">
       <h2>{{event?.name}}</h2>
       <div>Date: {{event?.date}}</div>
       <div [ngClass]="getStartTimeClass()"
@@ -29,9 +29,11 @@ import {Component, Input} from '@angular/core';
       .bold {
         font-weight: bold;
       }
+
       .green {
         color: green !important;
       }
+
       .pad-left {
         margin-left: 10px;
       }
@@ -39,7 +41,7 @@ import {Component, Input} from '@angular/core';
       .well div {
         color: #bbb;
       }
-      
+
       .thumbnail {
         min-height: 210px;
       }
