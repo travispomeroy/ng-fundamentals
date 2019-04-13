@@ -1,12 +1,17 @@
 import {Routes} from "@angular/router";
 import {EventsListComponent} from "./app/events/events-list.component";
 import {EventDetailsComponent} from "./app/events/details/event-details.component";
+import {CreateEventComponent} from "./app/events/create-event.component";
 
 
 export const appRoutes: Routes = [
   {
     path: 'events',
     component: EventsListComponent
+  },
+  {
+    path: 'events/new',
+    component: CreateEventComponent
   },
   {
     path: 'events/:id',
