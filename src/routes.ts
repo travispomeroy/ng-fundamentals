@@ -13,7 +13,8 @@ export const appRoutes: Routes = [
   },
   {
     path: 'events/new',
-    component: CreateEventComponent
+    component: CreateEventComponent,
+    canDeactivate: ['canDeactivateCreateEvent']
   },
   {
     path: 'events/:id',
