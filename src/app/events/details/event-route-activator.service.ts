@@ -5,7 +5,7 @@ import {
   RouterStateSnapshot,
   UrlTree
 } from "@angular/router";
-import {EventService} from "./shared/event.service";
+import {EventService} from "../shared/event.service";
 import {Observable} from "rxjs";
 
 @Injectable()
