@@ -7,6 +7,7 @@ import {EventThumbnailComponent} from './events/event-thumbnail.component';
 import {NavBarComponent} from "./navigation/navbar.component";
 import {EventService} from "./events/shared/event.service";
 import {ToasterService} from "./common/toaster.service";
+import {EventDetailsComponent} from "./events/details/event-details.component";
 
 @NgModule({
   imports: [
@@ -16,7 +17,8 @@ import {ToasterService} from "./common/toaster.service";
     EventsAppComponent,
     EventsListComponent,
     EventThumbnailComponent,
-    NavBarComponent
+    NavBarComponent,
+    EventDetailsComponent
   ],
   providers: [
     EventService,
