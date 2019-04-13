@@ -9,7 +9,7 @@ import {Component} from "@angular/core";
         <hr/>
         <div class="row">
           <event-thumbnail *ngFor="let event of events"
-                           [eventFromThumbnailComponent]="event"
+                           [event]="event"
                            class="col-md-5"></event-thumbnail>
         </div>
       </div>
