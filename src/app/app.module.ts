@@ -7,7 +7,7 @@ import {ToasterService} from "./common/toaster.service";
 import {RouterModule} from "@angular/router";
 import {appRoutes} from "../routes";
 import {Error404Component} from "./errors/404.component";
-
+import {AuthenticationService} from "./user/authentication/authentication.service";
 import {
   EventsListComponent,
   EventThumbnailComponent,
@@ -37,6 +37,7 @@ import {
     ToasterService,
     EventRouteActivator,
     EventsListResolverService,
+    AuthenticationService,
     {
       provide: 'canDeactivateCreateEvent',
       useValue: checkDirtyState
