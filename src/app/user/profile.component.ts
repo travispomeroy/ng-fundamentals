@@ -6,30 +6,30 @@ import {Router} from "@angular/router";
 @Component({
   templateUrl: './profile.component.html',
   styles: [
-    `
+      `
       em {
         float: right;
         color: #E05C65;
         padding-left: 10px;
         padding-right: 3px;
       }
-      
+
       .error input {
         background-color: #E3C3C5;
       }
-      
+
       .error ::-webkit-input-placeholder {
         color: #999;
       }
-      
+
       .error ::-moz-placeholder {
         color: #999;
       }
-      
+
       .error :-moz-placeholder {
         color: #999;
       }
-      
+
       .error :-ms-input-placeholder {
         color: #999;
       }
@@ -44,7 +44,8 @@ export class ProfileComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    let firstName = new FormControl(this.authenticationService.currentUser.firstName, Validators.required);
+    let firstName = new FormControl(this.authenticationService.currentUser.firstName,
+      [Validators.required, Validators.pattern('[a-zA-Z].*')]);
     let lastName = new FormControl(this.authenticationService.currentUser.lastName, Validators.required);
     this.profileFormGroup = new FormGroup({
       firstName: firstName,
