@@ -5,15 +5,17 @@
     <form [formGroup]="profileFormGroup" (ngSubmit)="saveProfile(profileFormGroup.value)"
           autocomplete="off"
           novalidate>
-      <div class="form-group">
+      <div class="form-group" [ngClass]="{'error': !validateFirstName()}">
+        <em *ngIf="!validateFirstName()">Required</em>
         <label for="firstName">First Name:</label>
         <input formControlName="firstName" id="firstName" type="text" class="form-control"
-               placeholder="First Name..." />
+               placeholder="First Name..."/>
       </div>
-      <div class="form-group">
+      <div class="form-group" [ngClass]="{'error': !validateLastName()}">
+        <em *ngIf="!validateLastName()">Required</em>
         <label for="lastName">Last Name:</label>
         <input formControlName="lastName" id="lastName" type="text" class="form-control"
-               placeholder="Last Name..." />
+               placeholder="Last Name..."/>
       </div>
 
       <button type="submit" class="btn btn-primary">Save</button>

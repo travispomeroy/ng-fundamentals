@@ -1,10 +1,40 @@
 import {Component, OnInit} from '@angular/core'
-import {FormControl, FormGroup} from "@angular/forms";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {AuthenticationService} from "./authentication/authentication.service";
 import {Router} from "@angular/router";
 
 @Component({
-  templateUrl: './profile.component.html'
+  templateUrl: './profile.component.html',
+  styles: [
+    `
+      em {
+        float: right;
+        color: #E05C65;
+        padding-left: 10px;
+        padding-right: 3px;
+      }
+      
+      .error input {
+        background-color: #E3C3C5;
+      }
+      
+      .error ::-webkit-input-placeholder {
+        color: #999;
+      }
+      
+      .error ::-moz-placeholder {
+        color: #999;
+      }
+      
+      .error :-moz-placeholder {
+        color: #999;
+      }
+      
+      .error :-ms-input-placeholder {
+        color: #999;
+      }
+    `
+  ]
 })
 export class ProfileComponent implements OnInit {
 
@@ -14,8 +44,8 @@ export class ProfileComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    let firstName = new FormControl(this.authenticationService.currentUser.firstName);
-    let lastName = new FormControl(this.authenticationService.currentUser.lastName);
+    let firstName = new FormControl(this.authenticationService.currentUser.firstName, Validators.required);
+    let lastName = new FormControl(this.authenticationService.currentUser.lastName, Validators.required);
     this.profileFormGroup = new FormGroup({
       firstName: firstName,
       lastName: lastName
@@ -27,7 +57,19 @@ export class ProfileComponent implements OnInit {
   }
 
   saveProfile(value: any) {
-    this.authenticationService.updateCurrentUser(value.firstName, value.lastName);
-    this.router.navigate(['/events']);
+    if (this.profileFormGroup.valid) {
+      this.authenticationService.updateCurrentUser(value.firstName, value.lastName);
+      this.router.navigate(['/events']);
+    }
+  }
+
+  validateLastName(): boolean {
+    let name = this.profileFormGroup.controls.lastName;
+    return name.valid || name.untouched;
+  }
+
+  validateFirstName() {
+    let name = this.profileFormGroup.controls.firstName;
+    return name.valid || name.untouched;
   }
 }
