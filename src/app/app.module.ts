@@ -17,10 +17,13 @@ import {
   EventRouteActivator,
   EventsListResolverService
 } from './events';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   imports: [
     BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(appRoutes)
   ],
   declarations: [
