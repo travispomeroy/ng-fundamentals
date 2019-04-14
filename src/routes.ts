@@ -1,6 +1,6 @@
 import {Routes} from "@angular/router";
 import {Error404Component} from "./app/errors/404.component";
-import {EventsListResolverService} from "./app/events";
+import {CreateSessionComponent, EventsListResolverService} from "./app/events";
 
 import {
   EventsListComponent,
@@ -21,6 +21,10 @@ export const appRoutes: Routes = [
     path: 'events/new',
     component: CreateEventComponent,
     canDeactivate: ['canDeactivateCreateEvent']
+  },
+  {
+    path: 'events/session/new',
+    component: CreateSessionComponent
   },
   {
     path: 'events/:id',
