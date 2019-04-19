@@ -1,6 +1,6 @@
 import {Component, OnInit} from "@angular/core";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {EventSession} from "../shared";
+import {EventSession, restrictedWords} from "../shared";
 
 @Component({
   templateUrl: './create-session.component.html',
@@ -53,7 +53,7 @@ export class CreateSessionComponent implements OnInit {
     this.abstract = new FormControl('', [
       Validators.required,
       Validators.maxLength(400),
-      this.restrictedWords(['foo', 'bar'])]);
+      restrictedWords(['foo', 'bar'])]);
 
     this.newSessionForm = new FormGroup({
       name: this.name,
@@ -62,19 +62,6 @@ export class CreateSessionComponent implements OnInit {
       level: this.level,
       abstract: this.abstract
     });
-  }
-
-  private restrictedWords(restricedWords: string[]) {
-    return (control: FormControl): { [key: string]: any } => {
-      if (!restricedWords) {
-        return null;
-      }
-
-      let invalidWords = restricedWords.map(value => control.value.includes(value) ? value : null)
-        .filter(value => value != null);
-
-      return invalidWords && invalidWords.length > 0 ? {'restrictedWords': invalidWords.join(', ')} : null;
-    }
   }
 
   saveSession(newSessionForm) {
