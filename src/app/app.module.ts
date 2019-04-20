@@ -20,6 +20,7 @@ import {
   SessionListComponent,
 } from './events';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {CollapsibleWellComponent} from "./common/collapsible-well.component";
 
 @NgModule({
   imports: [
@@ -37,6 +38,7 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
     CreateEventComponent,
     CreateSessionComponent,
     SessionListComponent,
+    CollapsibleWellComponent,
     Error404Component
   ],
   providers: [
