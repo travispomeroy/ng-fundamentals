@@ -27,6 +27,8 @@ export class EventDetailsComponent implements OnInit {
 
   private event: EventModel;
   private addMode: boolean;
+  private filterBy: string = "all";
+  private sortBy: string = 'votes';
 
   constructor(private eventService: EventService, private activatedRoute: ActivatedRoute) {
 
@@ -51,4 +53,6 @@ export class EventDetailsComponent implements OnInit {
   private cancelAddSession() {
     this.addMode = false;
   }
+
+
 }
