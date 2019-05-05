@@ -3,7 +3,7 @@ import {NgModule} from '@angular/core';
 
 import {EventsAppComponent} from './events-app.component';
 import {NavBarComponent} from "./navigation/navbar.component";
-import {ToasterService} from "./common/toaster.service";
+import {Toaster, TOASTER_TOKEN} from "./common/toaster.service";
 import {RouterModule} from "@angular/router";
 import {appRoutes} from "../routes";
 import {Error404Component} from "./errors/404.component";
@@ -21,6 +21,8 @@ import {
 } from './events';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {CollapsibleWellComponent} from "./common/collapsible-well.component";
+
+let toastr:Toaster = window['toastr'];
 
 @NgModule({
   imports: [
@@ -44,13 +46,16 @@ import {CollapsibleWellComponent} from "./common/collapsible-well.component";
   ],
   providers: [
     EventService,
-    ToasterService,
     EventRouteActivator,
     EventsListResolverService,
     AuthenticationService,
     {
       provide: 'canDeactivateCreateEvent',
       useValue: checkDirtyState
+    },
+    {
+      provide: TOASTER_TOKEN,
+      useValue: toastr
     }
   ],
   bootstrap: [EventsAppComponent]
